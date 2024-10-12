@@ -1,0 +1,9 @@
+{
+    // Cleaning Rules
+    drop_missing: true, // Remove missing values
+    drop_duplicates: true, // Remove duplicate rows
+    normalize_columns: [ // Columns to normalize
+        "age", // Example column name
+        "income" // Example column name
+    ]
+}
