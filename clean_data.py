@@ -33,12 +33,11 @@ def clean_data(file_path, config):
         if column in df.columns:
             df[column] = (df[column] - df[column].mean()) / df[column].std()
     
-    # Create output directory if it doesn't exist
+    # Save the cleaned data in the output directory
     output_dir = 'output'
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # Save the cleaned data in the output directory
     output_file_path = os.path.join(output_dir, f"cleaned_{os.path.basename(file_path)}")
     df.to_csv(output_file_path, index=False)
     print(f"Cleaned data saved to {output_file_path}")
@@ -47,10 +46,11 @@ def main():
     config_path = 'config.json5'
     config = load_config(config_path)
     
-    # Loop through all files in the current directory and clean them
-    for file in os.listdir('.'):
+    # Loop through all files in the input directory and clean them
+    input_dir = 'input'
+    for file in os.listdir(input_dir):
         if file.endswith('.csv') or file.endswith('.xlsx') or file.endswith('.json'):
-            clean_data(file, config)
+            clean_data(os.path.join(input_dir, file), config)
 
 if __name__ == "__main__":
     main()
