@@ -47,7 +47,7 @@ def main():
     config = load_config(config_path)
     
     # Loop through all files in the input directory and clean them
-    input_dir = 'input'
+    input_dir = 'inputs'
     for file in os.listdir(input_dir):
         if file.endswith('.csv') or file.endswith('.xlsx') or file.endswith('.json'):
             clean_data(os.path.join(input_dir, file), config)
